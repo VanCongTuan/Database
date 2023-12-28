@@ -1,0 +1,26 @@
+
+INSERT INTO KHACHHANG(MAKH, HoTenLot, Ten, DiaChi, Email, DienThoai) VALUES
+('KH001', 'Nguyen Van','Teo','123 Nguyen Van Troi','kh001@gmail.com','98765432'),
+('KH002','Le Thi','Trang','54 CMT8','kh002@yahoo.com','0908765422'),
+('KH003','Tran Chi','Cong','34/17 Phan Chu Trinh','kh003@yahoo.com','0919087654'),
+('KH004','Nguyen Thi Thu','Thao','43/1/2 Cong Hoa','kh004@gmail.com','098876543')
+
+INSERT INTO SANPHAM(MaSP, TenSP, MoTa, SoLuong, DonGia) VALUES
+('11','Sản phẩm hàng hóa 001','Đây là sản phẩm 001','21','100000'),
+('22','Sản phẩm áo quần 002','Đây là sản phẩm thứ 2','102','99000'),
+('33','Sản phẩm hoa quả trái cây tươi','Đây là sản phẩm thứ 3','25','95000'),
+('44','Sản phẩm hải sản tươi sống','Dây là sản phẩm hải sản','112','150000'),
+('55','Sản phẩm điện tử','Đây là sản phẩm thứ 4','54','105000')
+
+INSERT INTO HOADON(MaHD, NgayMua, MaKH, TrangThai) VALUES
+('111','2022-1-15','KH002','Da thanh toan'),
+('222','2022-2-1','KH003','Chua thanh toan'),
+('333','2022-2-15','KH001','Da thanh toan'),
+('444','2022-3-10','KH002','Da thanh toan')
+
+INSERT INTO CHITIETHOADON(MaHDCT, MaHD, MaSP, SoLuong) VALUES
+('1','222','11','10'),
+('2','111','22','25'),
+('3','333','33','12'),
+('4','333','33','15'),
+('5','222','11','17')

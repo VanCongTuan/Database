@@ -1,0 +1,41 @@
+
+
+CREATE TABLE KHACHHANG(
+    	MaKH varchar(5) PRIMARY KEY,
+    	HoTenLot varchar(30),
+    	Ten varchar(10),
+    	DiaChi varchar(150),
+    	Email varchar(30),
+    	DienThoai varchar(13)
+);
+
+
+CREATE TABLE SANPHAM(
+    	MaSP int PRIMARY KEY,
+    	TenSP varchar(50),
+    	MoTa varchar(255),
+    	SoLuong int,
+    	DonGia double
+);
+
+
+
+CREATE TABLE HOADON(
+    	MaHD int PRIMARY KEY,
+    	NgayMua date,
+    	MaKH varchar(5),
+    	TrangThai varchar(30),
+    	foreign key (MaKH) references KHACHHANG(MaKH)
+);
+
+
+
+CREATE TABLE CHITIETHOADON(
+	MaHDCT int PRIMARY KEY identity(1,1),
+	MaHD int,
+        MaSP int,
+        SoLuong int,
+        FOREIGN KEY (MaHD) references HOADON(MaHD),
+        FOREIGN KEY (MaSP) references SANPHAM(MaSP)
+);
+

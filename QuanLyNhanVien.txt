@@ -1,0 +1,90 @@
+﻿CREATE DATABASE QuanLyNhanVien;
+
+USE QuanLyNhanVien;
+
+CREATE TABLE PHONG_BAN
+(
+	MA_PB CHAR(10) PRIMARY KEY,
+    TEN_PB VARCHAR(20),
+    MA_TRUONGPHONG INT
+);
+
+CREATE TABLE NHAN_VIEN
+(
+	MA_NV INT PRIMARY KEY,
+	HO_NV VARCHAR(20),
+    TEN_NV VARCHAR(30),
+    NAM_SINH DATE,
+    DIA_CHI VARCHAR(30),
+    LUONG FLOAT,
+    MA_PB CHAR(10),
+    FOREIGN KEY (MA_PB) REFERENCES PHONG_BAN(MA_PB)
+);
+
+CREATE TABLE DU_AN
+(
+	MA_DUAN CHAR(5) PRIMARY KEY,
+    TEN_DUAN VARCHAR(30),
+    NGAY_BATDAU DATE,
+    NGAY_KETTHUC DATE
+);
+
+
+
+CREATE TABLE QUANLY_DUAN
+(
+	MA_DUAN CHAR(5),
+    MA_NV INT,
+    NGAY_THAM_GIA DATE,
+    NGAY_KET_THUC DATE,
+    SO_GIO FLOAT,
+    VAI_TRO VARCHAR(20),
+    PRIMARY KEY (MA_NV, MA_DUAN),
+    FOREIGN KEY (MA_DUAN) REFERENCES DU_AN(MA_DUAN),
+    FOREIGN KEY (MA_NV) REFERENCES NHAN_VIEN(MA_NV)
+);
+
+
+
+
+--=============================================================
+--Input dữ liệu vào database
+
+INSERT INTO PHONG_BAN(MA_PB, TEN_PB, MA_TRUONGPHONG) VALUES
+('PB001','San xuat 1','1'),
+('PB002','San xuat 2','2'),
+('PB003','Quan ly chat luong','5'),
+('PB004','Thiet ke','7'),
+('PB005','Nghien cuu cong nghe','6'),
+('PB006','Kinh doanh','8'),
+('PB007','Truyen thong','3')
+
+INSERT INTO NHAN_VIEN(MA_NV, HO_NV, TEN_NV, NAM_SINH, DIA_CHI, LUONG, MA_PB) VALUES
+('111','Nguyen','AN','1987-1-1','15 Nguyen Thi Minh Khai','10000','PB001'),
+('222','Le','Bao','1982-3-2','20 Nguyen Van Troi','8000','PB002'),
+('333','Tran','Cuong','1988-4-6','12 Cach Mang Thang 8','12000','PB001'),
+('444','Van','Thanh','1990-7-3','245/1 Le Thi Rieng','15000','PB004'),
+('555','Tran','Cuong','1995-8-1','43 Le Dai Hanh','5000','PB002'),
+('666','Nguyen','Binh','2000-7-8','67 To Hien Thanh','6500','PB006'),
+('777','Le','Phu','2000-9-11','32 Cao Thang','75000','PB005')
+('778','Nguyen','Hanh','2001-12-11','65/1 Cao Thang','75000','')
+
+
+INSERT INTO DU_AN(MA_DUAN, TEN_DUAN,NGAY_BATDAU, NGAY_KETTHUC) VALUES
+('DA001','Du an cang Long Thanh','2022-01-02','2023-12-26'),
+('DA002','Du an khong hai','2020-05-15','2021-08-11'),
+('DA003','Du an quoc lo 1','2021-03-20','2023-09-19'),
+('DA004','Du an xay cau nong thon','2022-08-17','2023-11-20');
+
+
+INSERT INTO QUANLY_DUAN(MA_DUAN, MA_NV,NGAY_THAM_GIA, NGAY_KET_THUC, SO_GIO) VALUES
+('DA001','111','2022-01-02','2023-05-26',20.5),
+('DA001','222','2022-02-02','2023-06-02',30),
+('DA001','333','2022-01-15','2023-04-22',23.5),
+('DA002','111','2020-07-15','2021-02-15',20.5),
+('DA002','666','2020-05-15','2021-05-21',20.5),
+('DA002','333','2020-06-20','2021-07-01',20.5),
+('DA004','555','2022-05-01','2023-10-29',40),
+('DA004','666','2022-09-10','2023-09-25',34.5),
+('DA004','777','2022-03-21','2023-05-11',19.0);
+
